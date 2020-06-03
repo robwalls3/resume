@@ -3,7 +3,7 @@
 node {
     stage "Prepare environment"
         checkout scm
-	def environment = docker.compose up -d
+	sh "./run_unoconv_serv.sh"
 
     stage "Move resume to resume.docx"
 	sh "mv *.docx resume.docx"
