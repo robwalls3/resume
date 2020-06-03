@@ -3,17 +3,11 @@
 node {
     stage "Prepare environment"
         checkout scm
-	sh "cmd=\$(cat run_server.sh)"
-	sh "\$(\$cmd)" 
 
     stage "Convert to PDF"
-	sh "curl --form file=@resume.docx http://localhost:7080/unoconv/pdf > latestResume.pdf"
+	sh "\$(/bin/sh ./convert.sh)"
 
     stage "Upload to git"
-	sh "git add latestResume.pdf"
-	sh "git commit -am 'Latest Resume'"
-	sh "git push -u origin master"
+	sh "\$(/bin/sh ./gitFast.sh)"
 
-    stage "Stop container"
-	sh "docker stop unoconv"
 }
