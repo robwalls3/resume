@@ -3,8 +3,8 @@
 node {
     stage "Prepare environment"
         checkout scm
-	sh "cmd=$(cat test.sh)"
-	sh "$($cmd)" 
+	sh "cmd=\$(cat test.sh)"
+	sh "\$(\$cmd)" 
 
     stage "Convert to PDF"
 	sh "curl --form file=@resume.docx http://localhost:7080/unoconv/pdf > latestResume.pdf"
