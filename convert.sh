@@ -1,2 +1,2 @@
-curl --form file=@resume.docx http://localhost:7080/unconv/pdf > latestResume.pdf
+lowriter --convert-to pdf resume.docx
 /bin/sh ./gitFast.sh
