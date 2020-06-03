@@ -1,4 +1,5 @@
-# resume
+# RESUME
+## the automatic resume publisher
 
 ## Goal
 Save Resume and automatically convert and upload to Git/elsewhere
