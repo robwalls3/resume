@@ -16,4 +16,6 @@ node {
 	sh "git commit -am 'Latest Resume'"
 	sh "git push -u origin master"
 
+    stage "Stop container"
+	sh "docker stop unoconv"
 }
