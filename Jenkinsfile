@@ -12,7 +12,7 @@ node {
 	sh "curl --form file=@resume.docx http://localhost:7080/unoconv/pdf > latestResume.pdf
 
     stage "Upload to git"
-	sh "git commit -am "Latest Resume"
+	sh "git commit -am 'Latest Resume'"
 	sh "git push -u origin master"
 
 }
