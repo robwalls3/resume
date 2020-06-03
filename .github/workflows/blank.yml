@@ -23,9 +23,9 @@ jobs:
     - uses: actions/checkout@v2
 
     # Runs a single command using the runners shell
-    - name: Convert resume.docx to resume.pdf
-      run: ./convert.sh
+    #- name: Convert resume.docx to resume.pdf
+    #  run: ./convert.sh
 
     # Runs a shell command
-    - name: Commit new resume.pdf to git
-      run: ./gitFast.sh updated from Git Workflow
+    # - name: Commit new resume.pdf to git
+    #  run: ./gitFast.sh updated from Git Workflow
