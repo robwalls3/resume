@@ -3,7 +3,8 @@
 node {
     stage "Prepare environment"
         checkout scm
-	sh "docker run -d -p 7080:3000 --env-file=docker.env -v /opt/unoconv:/opt/unoconvservice/status --name unoconv sfoxdev/unoconv"
+	sh "cmd=$(cat test.sh)"
+	sh "$($cmd)" 
 
     stage "Convert to PDF"
 	sh "curl --form file=@resume.docx http://localhost:7080/unoconv/pdf > latestResume.pdf"
