@@ -1,7 +1,7 @@
+#!/bin/bash
+
 source ./bash.env
 
-$MESSAGE = $1
-
 git add --all
-git commit -am "[GitFast Update] Message: $MESSAGE"
+git commit -am "[GitFast Update] Message: $1"
 git push -u $GITHUB_USER master
