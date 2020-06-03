@@ -3,7 +3,7 @@
 node {
     stage "Prepare environment"
         checkout scm
-	sh "./run_unoconv_serv.sh"
+	sh "docker run -d -p 7080:3000 --env-file=docker.env -v /opt/unoconv:/opt/unoconvservice/status --name unoconv sfoxdev/unoconv"
 
     stage "Move resume to resume.docx"
 	sh "mv *.docx resume.docx"
