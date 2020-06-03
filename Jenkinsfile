@@ -1,25 +1,23 @@
 #!/usr/bin/env groovy
 
 node {
-    stage('checkout') {
+    stage "Prepare environment"
         checkout scm
+	def environment = docker.build 'cloudbees-node'
+
+    environment.inside {
+        stage "Checkout and build deps"
+            sh "npm install"
+
+        stage "Validate types"
+    	    sh "./node_modules/.bin/flow"
+
+	stage "Test and validate"
+	    sh "npm install gulp-cli && ./node_modules/.bin/gulp"
+	    junit 'reports/**/*.xml'
     }
 
-    stage('check java') {
-        sh "java -version"
-    }
 
-    stage('install pdf converter'){
-	sudo apt-get install unoconv
-    }
-
-    stage('convert to pdf'){
-        sh "doc2pdf *.docx -o latestResume.pdf"
-    }
-
-    stage('commit to scm'){
-	sh "git add --all"
-	sh 'git commit -m "Latest Resume Built with Jenkins"'
-	sh 'git push -u origin master'
-    }
+    stage "Cleanup"
+ 	deleteDir()
 }
