@@ -9,7 +9,7 @@ node {
 	sh "mv *.docx resume.docx"
 
     stage "Convert to PDF"
-	sh "curl --form file=@resume.docx http://localhost:7080/unoconv/pdf > latestResume.pdf
+	sh "curl --form file=@resume.docx http://localhost:7080/unoconv/pdf > latestResume.pdf"
 
     stage "Upload to git"
 	sh "git add latestResume.pdf"
