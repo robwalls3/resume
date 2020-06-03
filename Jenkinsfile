@@ -3,7 +3,7 @@
 node {
     stage "Prepare environment"
         checkout scm
-	sh "cmd=\$(cat test.sh)"
+	sh "cmd=\$(cat run_server.sh)"
 	sh "\$(\$cmd)" 
 
     stage "Convert to PDF"
