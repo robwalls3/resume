@@ -7,5 +7,5 @@ echo "Running: $isRunning"
 if [[ $isRunning =~ $pat ]]; then
   echo "Already running"
 else
-  docker run --rm -network jenkins_network -d -p 7080:3000 --env-file=docker.env -v /opt/unoconv:/opt/unoconvservice/status sfoxdev/unoconv
+  docker run --rm --network $JENKINS_NETWORK -d -p 7080:3000 --name unoconv --env-file=docker.env -v /opt/unoconv:/opt/unoconvservice/status sfoxdev/unoconv
 fi
